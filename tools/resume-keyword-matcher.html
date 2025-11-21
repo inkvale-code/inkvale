@@ -2,67 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Resume Keyword Matcher — Inkvale</title>
+  <meta name="description" content="Paste a job description and your resume. The matcher highlights shared keywords and gives a match score to help improve ATS fit." />
+  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/tools/resume-keyword-matcher.html" />
 
-  <!-- Google Analytics -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RHZQNJ2JYG');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RHZQNJ2JYG');</script>
 
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
-    nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
-    .button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top:8px; }
-    textarea { width: 100%; height: 120px; margin-bottom: 12px; padding: 8px; }
-    button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer; }
-    .output { background: #f7f7f7; padding: 12px; border-radius: 6px; margin-top: 12px; display: none; }
+    body{font-family:system-ui;padding:18px;max-width:920px;margin:0 auto}
+    textarea{width:100%;height:160px;padding:8px;border-radius:6px;border:1px solid #ddd}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btn{padding:10px 12px;background:#0a58ca;color:#fff;border-radius:6px;text-decoration:none;display:inline-block}
   </style>
 </head>
 <body>
+  <a href="/inkvale/tools/">← Tools</a> | <a href="/inkvale/">Home</a>
 
-<nav>
-  <a href="../index.html">Home</a>
-  <a href="../posts/index.html">Articles</a>
-  <a href="index.html">Tools</a>
-  <a href="../products/index.html">Products</a>
-</nav>
+  <h1>Resume Keyword Matcher</h1>
+  <p>Paste the job description (left) and your resume (right) — the tool finds shared keywords and shows a match score you can use to tweak your resume for ATS.</p>
 
-<h1>Resume Keyword Matcher</h1>
-<p>Paste the job description and your resume. The tool highlights matched keywords and gives a match score.</p>
+  <div class="row">
+    <div>
+      <label for="jd">Job description</label>
+      <textarea id="jd" placeholder="Paste job description here"></textarea>
+    </div>
+    <div>
+      <label for="resume">Your resume</label>
+      <textarea id="resume" placeholder="Paste resume here"></textarea>
+    </div>
+  </div>
 
-<label>Job description</label>
-<textarea id="job" placeholder="Paste job advert here..."></textarea>
-<label>Your resume</label>
-<textarea id="resume" placeholder="Paste your resume here..."></textarea>
-<button id="run">Run Match</button>
+  <div style="margin-top:12px">
+    <button id="run" class="btn">Run Match</button>
+    <a href="/inkvale/products/quiet-income-starter-kit.html?utm_source=tool&utm_medium=cta&utm_campaign=upsell" class="btn" style="background:#444;margin-left:12px">Get the Starter Kit (£7)</a>
+  </div>
 
-<div id="out" class="output">
-  <p>Match score: <span id="score">0%</span></p>
-  <div id="matches"></div>
-</div>
+  <div id="result" style="margin-top:18px">
+    <p><strong>Match score:</strong> <span id="score">—</span></p>
+    <p id="highlights"></p>
+  </div>
 
-<script>
-function tokenize(text){ return text.toLowerCase().replace(/[^\w\s]/g,' ').split(/\s+/).filter(Boolean); }
-document.getElementById('run').addEventListener('click',function(){
-  const job = document.getElementById('job').value || '';
-  const resume = document.getElementById('resume').value || '';
-  if(!job||!resume){ alert('Please paste both the job description and your resume.'); return;}
-  const jobTokens = [...new Set(tokenize(job))];
-  const resumeTokens = new Set(tokenize(resume));
-  const matches = jobTokens.filter(t=>resumeTokens.has(t));
-  const score = jobTokens.length ? Math.round(matches.length / jobTokens.length * 100) : 0;
-  document.getElementById('score').textContent = score + '%';
-  document.getElementById('matches').innerHTML = '<strong>Matched keywords:</strong> ' + (matches.length ? matches.join(', ') : 'none');
-  document.getElementById('out').style.display = 'block';
-});
-</script>
-
-<p><a class="button" href="index.html">← Back to Tools</a></p>
-
+  <script>
+    function words(text){
+      return (text||"").toLowerCase().replace(/[^\w\s]/g,' ').split(/\s+/).filter(Boolean);
+    }
+    function computeScore(jd, resume){
+      const jdWords = words(jd);
+      const resumeWords = words(resume);
+      const jdSet = Array.from(new Set(jdWords));
+      let matched = jdSet.filter(w => resumeWords.includes(w));
+      const score = jdSet.length ? Math.round(100 * matched.length / jdSet.length) : 0;
+      return {score, matchedWords: matched.slice(0,80)};
+    }
+    document.getElementById('run').addEventListener('click', function(){
+      const jd = document.getElementById('jd').value;
+      const resume = document.getElementById('resume').value;
+      const r = computeScore(jd, resume);
+      document.getElementById('score').textContent = r.score + '%';
+      document.getElementById('highlights').textContent = 'Matched keywords: ' + (r.matchedWords.join(', ') || 'None');
+      if(window.gtag){ gtag('event','tool_use',{'tool_name':'resume_keyword_matcher','match_score':r.score}); }
+    });
+  </script>
 </body>
 </html>
