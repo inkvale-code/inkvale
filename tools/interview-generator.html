@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Job Interview Question Generator",
+  "url":"https://inkvale-code.github.io/inkvale/tools/interview-generator.html",
+  "applicationCategory":"BusinessApplication",
+  "description":"Generate targeted job interview questions to practice for your next interview.",
+  "operatingSystem":"Web",
+  "author":{"@type":"Organization","name":"Inkvale"}
+}
+</script>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Job Interview Question Generator — Inkvale</title>
+<meta name="description" content="Generate targeted job interview questions to practice for your next interview. Free tool by Inkvale.">
+<meta property="og:title" content="Job Interview Question Generator — Inkvale"/>
+<meta property="og:description" content="Generate targeted job interview questions to practice for your next interview. Free tool by Inkvale."/>
+<meta property="og:type" content="website"/>
+<link rel="canonical" href="https://inkvale-code.github.io/inkvale/tools/interview-generator.html"/>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;max-width:820px;margin:20px auto;padding:12px}
+textarea, select{width:100%;margin:8px 0;padding:8px}
+button{padding:8px 12px;border-radius:6px;border:0;background:#5A73FF;color:#fff}
+.output{background:#f7f7f7;padding:12px;border-radius:6px;margin-top:12px}
+</style>
+</head>
+<body>
+<h1>Job Interview Question Generator</h1>
+<p>Enter your job title and industry to generate targeted interview questions for practice.</p>
+
+<label>Job Title</label>
+<input id="jobTitle" type="text" placeholder="e.g., Software Engineer"/>
+<label>Industry</label>
+<input id="industry" type="text" placeholder="e.g., Technology"/>
+<button id="run">Generate Questions</button>
+
+<div id="out" class="output" style="display:none">
+<h3>Generated Questions:</h3>
+<ul id="questions"></ul>
+<p><a href="/products/" class="button">Check our Job Prep Starter Kit →</a></p>
+</div>
+
+<script>
+document.getElementById('run').addEventListener('click', function(){
+  const title = document.getElementById('jobTitle').value.trim();
+  const industry = document.getElementById('industry').value.trim();
+  if(!title||!industry){ alert('Please enter both fields'); return;}
+  const questions = [
+    `Why do you want to work as a ${title} in ${industry}?`,
+    `Describe a challenging situation you faced in ${industry} and how you solved it.`,
+    `What are your strengths as a ${title}?`,
+    `How do you stay updated with trends in ${industry}?`,
+    `Explain a project you led relevant to ${title} role.`
+  ];
+  const qList = document.getElementById('questions');
+  qList.innerHTML = '';
+  questions.forEach(q=>{const li=document.createElement('li');li.textContent=q;qList.appendChild(li)});
+  document.getElementById('out').style.display='block';
+});
+</script>
+
+</body>
+</html>
