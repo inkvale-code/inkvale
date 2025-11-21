@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>TOOL_TITLE — JobToolKit</title>
+<meta name="description" content="TOOL_DESC">
+<style>
+body{font-family:Arial,Helvetica,sans-serif;max-width:920px;margin:22px auto;padding:18px;color:#111}
+h1{color:#0F3C78}
+nav a{margin-right:10px}
+label{font-weight:600;display:block;margin-top:10px}
+textarea,input,select{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:6px}
+button{margin-top:10px;padding:10px 14px;border:0;border-radius:8px;background:#0F3C78;color:#fff;font-weight:700;cursor:pointer}
+.output{margin-top:14px;padding:12px;border-radius:8px;background:#f7f9fc;border:1px solid #e6eef9}
+.badge{display:inline-block;padding:6px 10px;border-radius:6px;background:#0F3C78;color:#fff}
+.cta{margin-top:12px;padding:10px;border-radius:8px;background:#fff;border:1px dashed #ccc}
+.small{font-size:13px;color:#666}
+pre{white-space:pre-wrap;word-wrap:break-word}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/">Home</a>
+  <a href="/tools/">Tools</a>
+  <a href="/posts/">Articles</a>
+  <a href="/products/">Products</a>
+</nav>
+
+<h1>TOOL_TITLE</h1>
+<p class="small">TOOL_DESC</p>
+
+<div id="formArea">
+  <!-- Replace this block per tool -->
+  INPUTS_HTML
+  <button id="runBtn">Run</button>
+</div>
+
+<div id="out" class="output" style="display:none">
+  <div id="result"></div>
+  <div class="cta">
+    <p><strong>Next step:</strong> <span id="upsellText"></span></p>
+    <p class="small">Get the full pack: <a id="upsellLink" href="#" target="_blank">Open product →</a></p>
+  </div>
+</div>
+
+<script>
+function tokenize(text){
+  return (text||'').toLowerCase().replace(/[^\w\s]/g,' ').split(/\s+/).filter(Boolean);
+}
+function uniq(arr){ return [...new Set(arr)]; }
+function getVal(id){ const el=document.getElementById(id); return el?el.value:''; }
+function showOut(html, upsellText, upsellHref){
+  document.getElementById('result').innerHTML = html;
+  document.getElementById('upsellText').textContent = upsellText || '';
+  document.getElementById('upsellLink').href = upsellHref || '#';
+  document.getElementById('out').style.display='block';
+}
+
+// Replace this function per tool:
+async function runTool(){
+  showOut('<p class="small">Tool not configured yet.</p>','See all products','/products/');
+}
+
+document.getElementById('runBtn').addEventListener('click', async () => {
+  try{ await runTool(); }catch(e){ showOut('<pre>Error: '+e.message+'</pre>','See all products','/products/'); }
+});
+</script>
+</body>
+</html>
