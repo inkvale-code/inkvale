@@ -17,7 +17,11 @@
   <style>
     body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
     nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
-    .button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top:8px; }
+    textarea { width: 100%; height: 100px; margin-bottom: 12px; padding: 8px; }
+    input { width: 100%; margin-bottom: 12px; padding: 8px; }
+    button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer; }
+    .output { background: #f7f7f7; padding: 12px; border-radius: 6px; margin-top: 12px; display: none; white-space: pre-wrap; }
+    .button-link { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -30,9 +34,45 @@
 </nav>
 
 <h1>Cover Letter Generator</h1>
-<p>Generate a quick, professional cover letter using this tool (example placeholder).</p>
+<p>Paste the job description and your key skills. This tool generates a simple cover letter draft.</p>
 
-<p><a class="button" href="index.html">← Back to Tools</a></p>
+<label>Job Description:</label>
+<textarea id="job" placeholder="Paste the job description here..."></textarea>
+
+<label>Key Skills (comma separated):</label>
+<input type="text" id="skills" placeholder="e.g., JavaScript, communication, leadership">
+
+<button id="generate">Generate Cover Letter</button>
+
+<div id="out" class="output"></div>
+
+<script>
+document.getElementById('generate').addEventListener('click',function(){
+  const job = document.getElementById('job').value.trim();
+  const skills = document.getElementById('skills').value.trim();
+  if(!job || !skills){ alert('Please enter both job description and skills.'); return; }
+
+  const skillList = skills.split(',').map(s=>s.trim()).join(', ');
+  const letter = `Dear Hiring Manager,
+
+I am excited to apply for this position. Based on the job description:
+
+${job}
+
+I believe my skills in ${skillList} make me a strong candidate for this role. I am confident that I can contribute effectively to your team and deliver results.
+
+Thank you for considering my application.
+
+Best regards,
+[Your Name]`;
+
+  const out = document.getElementById('out');
+  out.textContent = letter;
+  out.style.display = 'block';
+});
+</script>
+
+<p><a class="button-link" href="index.html">← Back to Tools</a></p>
 
 </body>
 </html>
