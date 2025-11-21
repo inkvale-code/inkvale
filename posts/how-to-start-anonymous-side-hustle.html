@@ -2,45 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>How to Start an Anonymous Side Hustle — Inkvale</title>
+  <meta name="description" content="Step-by-step plan to launch an anonymous, low-visibility side hustle: setup, product ideas, sales pages, and first-sale checklist." />
+  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/posts/how-to-start-anonymous-side-hustle.html" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"How to Start an Anonymous Side Hustle","description":"Step-by-step plan to launch an anonymous, low-visibility side hustle.","url":"https://inkvale-code.github.io/inkvale/posts/how-to-start-anonymous-side-hustle.html","publisher":{"@type":"Organization","name":"Inkvale"}}
+  </script>
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RHZQNJ2JYG');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RHZQNJ2JYG');</script>
 
-  <style>
-    body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
-    nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
-    .button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top:8px; }
-  </style>
+  <style>body{font-family:system-ui;padding:22px;max-width:900px;margin:0 auto;line-height:1.75}</style>
 </head>
 <body>
+  <a href="/inkvale/">← Home</a> | <a href="/inkvale/posts/">Articles</a>
+  <article>
+    <h1>How to Start an Anonymous Side Hustle</h1>
+    <p><em>Setup, launch, and make your first sale without building a public brand.</em></p>
 
-<nav>
-  <a href="../index.html">Home</a>
-  <a href="index.html">Articles</a>
-  <a href="../tools/index.html">Tools</a>
-  <a href="../products/index.html">Products</a>
-</nav>
+    <p>Launching a side hustle anonymously is about reducing exposure while maximizing effectiveness. For many people, privacy is a priority: you might want income without public networking, or you may prefer to test ideas quietly. This guide gives a practical, step-by-step plan you can follow and finish in 30 days.</p>
 
-<h1>How to Start an Anonymous Side Hustle</h1>
-<p>Step-by-step plan for creating income online without showing your face or building a public brand.</p>
+    <h2>Phase 0: Decide and limit scope (Day 0–1)</h2>
+    <p>Pick a single, narrow deliverable. Narrowness is essential. Good examples: a 7-page guide that teaches one job application trick, a bundle of three tailored cover letters, or a micro-tool that extracts keywords from job descriptions. Avoid broad, long-term products at first.</p>
 
-<ol>
-  <li>Pick a micro-niche problem to solve</li>
-  <li>Create a small guide, PDF, or tool</li>
-  <li>Publish 3–5 short articles</li>
-  <li>Sell your first product (£5–£25)</li>
-  <li>Collect feedback and iterate</li>
-</ol>
+    <h2>Phase 1: Lightweight setup (Day 1–3)</h2>
+    <ol>
+      <li><strong>Create an anonymous identity:</strong> new email (Gmail), brand name (Inkvale style), and a minimal GitHub account if you plan to host tools or pages. Keep the identity consistent across product and Gumroad accounts.</li>
+      <li><strong>Open a Gumroad account:</strong> use your anonymous brand email. Gumroad is ideal because it handles payment, delivery, and VAT.</li>
+      <li><strong>Prepare a one-page sales page:</strong> host on GitHub Pages. A single HTML file with headline, 3 bullets, one screenshot and a Gumroad buy button is enough.</li>
+    </ol>
 
-<p><a class="button" href="index.html">← Back to Articles</a></p>
+    <h2>Phase 2: Build the product (Day 4–12)</h2>
+    <p>Draft the product quickly. If it's a PDF guide, use a simple, readable font and include 1–2 screenshots and a short template. If it's a tool, build a minimal single-page web utility. The aim is usefulness over polish. Finish the first draft and export as PDF (for guides) or live URL (for tools).</p>
 
+    <h2>Phase 3: Launch & test (Day 13–20)</h2>
+    <p>Soft launch to one or two targeted places. Examples: a specific subreddit related to your niche, a targeted Slack group, or a small mailing list. Keep the message helpful, not promotional—explain the problem you solved and offer the product as a practical solution. Offer a small discount for the first 5 buyers (use Gumroad coupons).</p>
+
+    <p>Collect feedback via a one-question follow-up email (Gumroad provides buyer emails). Ask: “What did you find most useful, and what should we improve?” Use feedback to sharpen product copy, add an FAQ, and fix any delivery friction.</p>
+
+    <h2>Phase 4: Track & iterate (Day 21–30)</h2>
+    <p>Install GA4 on all pages (homepage, tool pages, product pages) and track three events:</p>
+    <ul>
+      <li><strong>tool_use</strong> — when a user runs a tool (we add this in tool templates)</li>
+      <li><strong>begin_checkout</strong> — when the product buy button is clicked</li>
+      <li><strong>purchase</strong> — on Gumroad redirect / thank-you page (if you enable redirect)</li>
+    </ul>
+
+    <p>Mark `begin_checkout` and `purchase` as conversions in GA4 so you can see conversion rates. If your conversion from product page to buy is below 1%, improve copy, screenshots, or price. If conversion is above 2.5–3%, consider scaling using small promoted posts or niche newsletters.</p>
+
+    <h2>Operational tips for anonymity and reliability</h2>
+    <ul>
+      <li>Use a fresh brand email and do not link it to your primary social profiles.</li>
+      <li>Use Gumroad for checkout; enable immediate file delivery and set a clear refund policy (7 days is standard).</li>
+      <li>Keep the product small and iteratively improve. Each minor update (add a sample, improve a template) can massively increase perceived value.</li>
+    </ul>
+
+    <p>Finally, treat this like a productization practice: each small product teaches you one market lesson. Repeat the process — the second and third products get easier and your funnels get better. If you want a ready-made checklist, templates and a launch blueprint, see the <a href="/inkvale/products/quiet-income-starter-kit.html">Quiet Income Starter Kit — £7</a>.</p>
+  </article>
 </body>
 </html>
