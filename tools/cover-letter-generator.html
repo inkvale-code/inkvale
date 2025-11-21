@@ -2,77 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Cover Letter Generator — Inkvale</title>
+  <meta name="description" content="Generate a concise cover letter from short inputs. Use the output to edit and personalise before sending." />
+  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/tools/cover-letter-generator.html" />
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RHZQNJ2JYG');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RHZQNJ2JYG');</script>
 
-  <style>
-    body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
-    nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
-    textarea { width: 100%; height: 100px; margin-bottom: 12px; padding: 8px; }
-    input { width: 100%; margin-bottom: 12px; padding: 8px; }
-    button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer; }
-    .output { background: #f7f7f7; padding: 12px; border-radius: 6px; margin-top: 12px; display: none; white-space: pre-wrap; }
-    .button-link { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top: 8px; }
-  </style>
+  <style>body{font-family:system-ui;padding:18px;max-width:920px;margin:0 auto}input,textarea{width:100%;padding:8px;border-radius:6px;border:1px solid #ddd}.btn{padding:10px 12px;background:#0a58ca;color:#fff;border-radius:6px;text-decoration:none;display:inline-block}</style>
 </head>
 <body>
+  <a href="/inkvale/tools/">← Tools</a> | <a href="/inkvale/">Home</a>
 
-<nav>
-  <a href="../index.html">Home</a>
-  <a href="../posts/index.html">Articles</a>
-  <a href="index.html">Tools</a>
-  <a href="../products/index.html">Products</a>
-</nav>
+  <h1>Cover Letter Generator</h1>
+  <p>Enter a few short inputs and the tool generates a concise cover letter you can edit and send.</p>
 
-<h1>Cover Letter Generator</h1>
-<p>Paste the job description and your key skills. This tool generates a simple cover letter draft.</p>
+  <label>Role title</label>
+  <input id="role" placeholder="e.g. Data Analyst" />
+  <label>Company name</label>
+  <input id="company" placeholder="e.g. Acme Ltd" />
+  <label>One-line summary of your experience</label>
+  <input id="summary" placeholder="e.g. 4 years data analysis in fintech" />
+  <label>One achievement bullet</label>
+  <input id="ach" placeholder="e.g. improved reporting speed by 40%" />
 
-<label>Job Description:</label>
-<textarea id="job" placeholder="Paste the job description here..."></textarea>
+  <div style="margin-top:12px">
+    <button id="gen" class="btn">Generate Cover Letter</button>
+    <a class="btn" href="/inkvale/products/quiet-income-starter-kit.html?utm_source=tool&utm_medium=cta&utm_campaign=upsell" style="background:#444;margin-left:12px">Get the Starter Kit (£7)</a>
+  </div>
 
-<label>Key Skills (comma separated):</label>
-<input type="text" id="skills" placeholder="e.g., JavaScript, communication, leadership">
+  <h2 style="margin-top:18px">Generated cover letter</h2>
+  <pre id="out" style="white-space:pre-wrap;padding:12px;border-radius:6px;border:1px solid #eee"></pre>
 
-<button id="generate">Generate Cover Letter</button>
+  <script>
+    document.getElementById('gen').addEventListener('click', function(){
+      const role = document.getElementById('role').value || '[Role]';
+      const company = document.getElementById('company').value || '[Company]';
+      const summary = document.getElementById('summary').value || '';
+      const ach = document.getElementById('ach').value || '';
+      const letter = `Dear Hiring Manager,
 
-<div id="out" class="output"></div>
+I am writing to apply for the ${role} role at ${company}. ${summary} I bring focused experience and direct results—${ach}.
 
-<script>
-document.getElementById('generate').addEventListener('click',function(){
-  const job = document.getElementById('job').value.trim();
-  const skills = document.getElementById('skills').value.trim();
-  if(!job || !skills){ alert('Please enter both job description and skills.'); return; }
+I am confident I can contribute to ${company}'s immediate needs and would welcome the opportunity to discuss how my background fits the role.
 
-  const skillList = skills.split(',').map(s=>s.trim()).join(', ');
-  const letter = `Dear Hiring Manager,
-
-I am excited to apply for this position. Based on the job description:
-
-${job}
-
-I believe my skills in ${skillList} make me a strong candidate for this role. I am confident that I can contribute effectively to your team and deliver results.
-
-Thank you for considering my application.
-
-Best regards,
-[Your Name]`;
-
-  const out = document.getElementById('out');
-  out.textContent = letter;
-  out.style.display = 'block';
-});
-</script>
-
-<p><a class="button-link" href="index.html">← Back to Tools</a></p>
-
+Sincerely,
+[Your name]`;
+      document.getElementById('out').textContent = letter;
+      if(window.gtag){ gtag('event','tool_use',{'tool_name':'cover_letter_generator'}); }
+    });
+  </script>
 </body>
 </html>
