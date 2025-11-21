@@ -1,32 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Inkvale — Quiet Tools & Digital Products</title>
-  <meta name="description" content="Inkvale builds simple micro-tools, quiet digital products, and anonymous income systems you can use immediately.">
-
-  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inkvale — Quiet Tools & Starter Products for Anonymous Income</title>
+  <meta name="description" content="Inkvale: free resume & cover-letter tools, practical guides, and low-cost starter products to build anonymous, low-visibility income." />
+  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Inkvale — Quiet Tools & Digital Products">
-  <meta property="og:description" content="Simple micro-tools, quiet digital products, and anonymous income systems.">
-  <meta property="og:url" content="https://inkvale-code.github.io/inkvale/">
-  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Inkvale" />
+  <meta property="og:title" content="Inkvale — Quiet Tools & Starter Products for Anonymous Income" />
+  <meta property="og:description" content="Free resume and cover-letter tools, guides, and starter products for anonymous income." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://inkvale-code.github.io/inkvale/" />
+  <meta property="og:image" content="https://inkvale-code.github.io/inkvale/assets/og-home.png" />
 
-  <!-- JSON-LD -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Inkvale — Quiet Tools & Starter Products for Anonymous Income" />
+  <meta name="twitter:description" content="Free resume and cover-letter tools, guides, and starter products for anonymous income." />
+  <meta name="twitter:image" content="https://inkvale-code.github.io/inkvale/assets/og-home.png" />
+
+  <meta name="robots" content="index, follow" />
+
+  <!-- JSON-LD: WebSite + Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Inkvale",
-    "url": "https://inkvale-code.github.io/inkvale/",
-    "description": "Inkvale builds micro-tools and digital products for anonymous creators.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Inkvale"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://inkvale-code.github.io/inkvale/#website",
+        "url": "https://inkvale-code.github.io/inkvale/",
+        "name": "Inkvale",
+        "description": "Free resume & cover-letter tools, practical guides, and low-cost starter products for anonymous income.",
+        "publisher": {"@id": "https://inkvale-code.github.io/inkvale/#org"}
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://inkvale-code.github.io/inkvale/#org",
+        "name": "Inkvale",
+        "url": "https://inkvale-code.github.io/inkvale/",
+        "logo": "https://inkvale-code.github.io/inkvale/assets/logo.png"
+      }
+    ]
   }
   </script>
 
@@ -40,43 +57,66 @@
   </script>
 
   <style>
-    body { font-family: sans-serif; margin: 40px auto; max-width: 720px; line-height: 1.6; }
-    header nav a { margin-right: 18px; }
-    h1 { font-size: 2.4rem; margin-bottom: 0.4rem; }
-    .cta { display: inline-block; background:#111; color:#fff; padding:12px 20px; margin-top:20px; text-decoration:none; }
+    :root{--accent:#0a58ca;--muted:#666}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#111;margin:0;padding:0;background:#fff}
+    .wrap{max-width:960px;margin:48px auto;padding:24px}
+    header nav a{margin-right:18px;color:var(--accent);text-decoration:none}
+    h1{font-size:30px;margin:6px 0}
+    .lead{font-size:18px;color:#2a2a2a}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .card{padding:16px;border:1px solid #eee;border-radius:8px;background:#fff}
+    .btn{display:inline-block;padding:10px 14px;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none}
+    footer{margin-top:36px;color:var(--muted);font-size:13px}
   </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <header>
+      <nav>
+        <a href="/inkvale/">Home</a>
+        <a href="/inkvale/posts/">Articles</a>
+        <a href="/inkvale/tools/">Tools</a>
+        <a href="/inkvale/products/">Products</a>
+      </nav>
+    </header>
 
-<header>
-  <nav>
-    <a href="/inkvale/">Home</a>
-    <a href="/inkvale/tools/">Tools</a>
-    <a href="/inkvale/products/">Products</a>
-    <a href="/inkvale/posts/">Posts</a>
-  </nav>
-</header>
+    <main>
+      <h1>Inkvale — Quiet Tools & Starter Products for Anonymous Income</h1>
+      <p class="lead">Free micro-tools and low-cost starter guides to build anonymous, low-visibility income streams. Use the tools, read focused guides, and buy compact starter products that get you earning fast.</p>
 
-<h1>Inkvale — Quiet Tools & Digital Products</h1>
-<p>Inkvale builds simple micro-tools, quiet digital products, and sustainable anonymous income systems. Everything here is designed to be fast, useful, and instantly usable.</p>
+      <div class="grid" aria-label="Top paths">
+        <div class="card">
+          <h3>Free tools</h3>
+          <p>Resume Keyword Matcher · ATS Resume Scanner · Cover Letter Generator</p>
+          <a class="btn" href="/inkvale/tools/">Open Tools</a>
+        </div>
 
-<h2>Start with a tool</h2>
-<ul>
-  <li><a href="/inkvale/tools/word-counter.html">Word Counter</a></li>
-  <li><a href="/inkvale/tools/character-counter.html">Character Counter</a></li>
-</ul>
+        <div class="card">
+          <h3>Starter products</h3>
+          <p>Concise guides and templates designed for immediate action.</p>
+          <a class="btn" href="/inkvale/products/">View Products</a>
+        </div>
+      </div>
 
-<h2>Explore products</h2>
-<ul>
-  <li><a href="/inkvale/products/quiet-income-guide.html">Quiet Income Guide</a></li>
-</ul>
+      <section style="margin-top:28px;">
+        <h2>Featured — Quiet Income Starter Kit</h2>
+        <p>Step-by-step kit: product idea, short PDF template, pricing & Gumroad setup. Start earning within days.</p>
+        <a class="btn" href="/inkvale/products/quiet-income-starter-kit.html">View Kit — £7</a>
+      </section>
 
-<h2>Latest posts</h2>
-<ul>
-  <li><a href="/inkvale/posts/quiet-income.html">Quiet Income: How to Earn Without an Audience</a></li>
-  <li><a href="/inkvale/posts/micro-tool-strategy.html">The Micro-Tool Strategy</a></li>
-</ul>
+      <section style="margin-top:28px;">
+        <h2>Latest posts</h2>
+        <ul>
+          <li><a href="/inkvale/posts/what-is-quiet-income.html">What Is Quiet Income?</a></li>
+          <li><a href="/inkvale/posts/5-low-visibility-income-ideas.html">5 Low-Visibility Income Ideas</a></li>
+          <li><a href="/inkvale/posts/how-to-start-anonymous-side-hustle.html">How to Start an Anonymous Side Hustle</a></li>
+        </ul>
+      </section>
+    </main>
 
+    <footer>
+      <p>© Inkvale — practical job tools and starter products. <a href="/inkvale/robots.txt">robots.txt</a></p>
+    </footer>
+  </div>
 </body>
 </html>
