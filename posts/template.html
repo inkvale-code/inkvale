@@ -1,38 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ARTICLE_TITLE — JobToolKit</title>
-<meta name="description" content="ARTICLE_META">
-<style>
-body{font-family:Arial,Helvetica,sans-serif;max-width:860px;margin:22px auto;padding:18px;color:#111;line-height:1.6}
-h1{color:#0F3C78}
-nav a{margin-right:10px}
-small{color:#666}
-a{color:#0F3C78}
-</style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title><!--TITLE--></title>
+  <meta name="description" content="<!--METADESC-->" />
+  <link rel="canonical" href="<!--CANONICAL-->" />
+
+  <!-- JSON-LD Article (replace placeholders) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"<!--TITLE-->",
+    "description":"<!--METADESC-->",
+    "url":"<!--CANONICAL-->",
+    "publisher":{"@type":"Organization","name":"Inkvale","logo":{"@type":"ImageObject","url":"https://inkvale-code.github.io/inkvale/assets/logo.png"}}
+  }
+  </script>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RHZQNJ2JYG');</script>
+
+  <style>body{font-family:system-ui;padding:20px;max-width:900px;margin:0 auto;line-height:1.7}</style>
 </head>
 <body>
-<nav>
-  <a href="/">Home</a>
-  <a href="/tools/">Tools</a>
-  <a href="/posts/">Articles</a>
-  <a href="/products/">Products</a>
-</nav>
+  <a href="/inkvale/">← Home</a> | <a href="/inkvale/posts/">Articles</a>
+  <article>
+    <h1><!--TITLE--></h1>
+    <p><em><!--SUBHEAD--></em></p>
 
-<h1>ARTICLE_TITLE</h1>
-<p><small>Job search guide from JobToolKit.</small></p>
+    <!--BODY-->
 
-ARTICLE_HTML
-
-<hr>
-<p><strong>Next steps:</strong></p>
-<ul>
-  <li>Try the <a href="/tools/resume-keyword-matcher.html">Resume Keyword Matcher</a></li>
-  <li>Scan your CV with the <a href="/tools/ats-resume-scanner.html">ATS Resume Scanner</a></li>
-  <li>Get the <a href="/products/ultimate-job-seeker-bundle.html">Ultimate Job-Seeker Bundle</a> for templates and checklists.</li>
-</ul>
-
+    <hr />
+    <p>Like this? <a href="/inkvale/products/quiet-income-starter-kit.html?utm_source=post&utm_medium=cta&utm_campaign=product_page">Get the Quiet Income Starter Kit — £7</a></p>
+  </article>
 </body>
 </html>
