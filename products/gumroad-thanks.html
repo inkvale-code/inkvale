@@ -1,1 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Thanks — Inkvale</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RHZQNJ2JYG');
+    // Fire a purchase event — Gumroad can append ?transaction_id=... on redirect
+    (function(){
+      var params = new URLSearchParams(location.search);
+      var tx = params.get('transaction_id') || params.get('txn_id') || 'unknown';
+      gtag('event','purchase',{transaction_id:tx, value:7.00, currency:'GBP', product_id:'quiet_income_starter_kit'});
+    })();
+  </script>
+</head>
+<body style="font-family:system-ui;max-width:800px;margin:40px auto;padding:16px;">
+  <h1>Thank you — your purchase is complete</h1>
+  <p>Download link was emailed to you by Gumroad. If anything is missing, use the email used for purchase to contact Gumroad support.</p>
+  <p><a href="/inkvale/">Back to Inkvale</a></p>
+</body>
+</html>
 
