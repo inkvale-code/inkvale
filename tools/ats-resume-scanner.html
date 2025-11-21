@@ -1,102 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ATS Resume Scanner — JobToolKit</title>
-<meta name="description" content="Quick ATS-style scan of your resume text. Spot common ATS issues before you apply.">
-<style>
-body{font-family:Arial,Helvetica,sans-serif;max-width:920px;margin:22px auto;padding:18px;color:#111}
-h1{color:#0F3C78}
-nav a{margin-right:10px}
-label{font-weight:600;display:block;margin-top:10px}
-textarea{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:6px;height:140px}
-button{margin-top:10px;padding:10px 14px;border:0;border-radius:8px;background:#0F3C78;color:#fff;font-weight:700;cursor:pointer}
-.output{margin-top:14px;padding:12px;border-radius:8px;background:#f7f9fc;border:1px solid #e6eef9}
-.badge{display:inline-block;padding:6px 10px;border-radius:6px;background:#0F3C78;color:#fff}
-.cta{margin-top:12px;padding:10px;border-radius:8px;background:#fff;border:1px dashed #ccc}
-.small{font-size:13px;color:#666}
-</style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATS Resume Scanner — Inkvale</title>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RHZQNJ2JYG');
+  </script>
 
-  gtag('config', 'G-RHZQNJ2JYG');
-</script>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
+    nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
+    .button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top:8px; }
+  </style>
 </head>
 <body>
+
 <nav>
-  <a href="/">Home</a>
-  <a href="/tools/">Tools</a>
-  <a href="/posts/">Articles</a>
-  <a href="/products/">Products</a>
+  <a href="../index.html">Home</a>
+  <a href="../posts/index.html">Articles</a>
+  <a href="index.html">Tools</a>
+  <a href="../products/index.html">Products</a>
 </nav>
 
 <h1>ATS Resume Scanner</h1>
-<p class="small">Paste your resume text and optionally the job description. This tool flags basic ATS issues and keyword match level.</p>
+<p>This tool scans your resume against ATS rules and highlights potential issues (example tool placeholder).</p>
 
-<label>Resume text</label>
-<textarea id="resume"></textarea>
+<p><a class="button" href="index.html">← Back to Tools</a></p>
 
-<label>Optional: job description</label>
-<textarea id="job"></textarea>
-
-<button id="runBtn">Scan resume</button>
-
-<div id="out" class="output" style="display:none">
-  <div id="result"></div>
-  <div class="cta">
-    <p><strong>Next step:</strong> <span id="upsellText"></span></p>
-    <p class="small"><a id="upsellLink" href="/products/ats-optimization-checklist.html" target="_blank">Get the ATS Optimization Checklist →</a></p>
-  </div>
-</div>
-
-<script>
-function tokenize(text){
-  return (text||'').toLowerCase().replace(/[^\w\s]/g,' ').split(/\s+/).filter(Boolean);
-}
-function uniq(arr){ return [...new Set(arr)]; }
-
-document.getElementById('runBtn').addEventListener('click', () => {
-  const r = document.getElementById('resume').value || '';
-  const j = document.getElementById('job').value || '';
-  if(!r){ alert('Paste your resume'); return; }
-
-  const warnings = [];
-  if(r.length < 200) warnings.push('Resume is very short. Aim for at least 200–300 words.');
-  if(!/experience|work history|employment/i.test(r)) warnings.push('Could not find an Experience / Work history section.');
-  if(!/education/i.test(r)) warnings.push('Education section not detected.');
-  if(/\.(jpg|png|gif)|<img/i.test(r)) warnings.push('Images detected — most ATS systems cannot read text inside images.');
-  if(/table|<\/td>|<\/tr>/i.test(r)) warnings.push('Table formatting detected — can cause parsing issues.');
-
-  let keywordHtml = '';
-  if(j){
-    const jobTokens = uniq(tokenize(j));
-    const resTokens = new Set(tokenize(r));
-    const matches = jobTokens.filter(t => resTokens.has(t) && t.length>2);
-    const score = jobTokens.length ? Math.round(matches.length/jobTokens.length*100) : 0;
-    keywordHtml = `<p><strong>Keyword match:</strong> <span class="badge">${score}%</span><br>${matches.length? 'Matched: '+matches.join(', ') : 'No major overlaps detected.'}</p>`;
-  }
-
-  const scoreBase = 100 - warnings.length*15;
-  const score = Math.max(20, scoreBase);
-
-  let html = `<p>ATS format score: <span class="badge">${score}%</span></p>`;
-  if(warnings.length){
-    html += '<p><strong>Warnings:</strong><ul>' + warnings.map(w=>`<li>${w}</li>`).join('') + '</ul></p>';
-  } else {
-    html += '<p>No major formatting issues detected.</p>';
-  }
-  html += keywordHtml;
-
-  document.getElementById('result').innerHTML = html;
-  document.getElementById('upsellText').textContent = 'Use the checklist + templates to fix these issues in under 30 minutes.';
-  document.getElementById('out').style.display = 'block';
-});
-</script>
 </body>
 </html>
