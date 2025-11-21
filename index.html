@@ -1,139 +1,118 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Inkvale — Quiet Career Tools & Resources</title>
-<meta name="description" content="Free career micro-tools, PDFs, and articles designed to optimize your job search, resumes, and LinkedIn profile.">
-<meta property="og:title" content="Inkvale — Quiet Career Tools & Resources"/>
-<meta property="og:description" content="Free career micro-tools, PDFs, and articles designed to optimize your job search, resumes, and LinkedIn profile."/>
-<meta property="og:type" content="website"/>
-<link rel="canonical" href="https://inkvale-code.github.io/inkvale/"/>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;max-width:880px;margin:20px auto;padding:16px}
-h1,h2{color:#222}
-ul{margin-left:20px}
-a.button{background:#5A73FF;color:#fff;padding:8px 12px;border-radius:6px;text-decoration:none;display:inline-block;margin:4px 0}
-.section{margin-bottom:40px}
-</style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Inkvale — Quiet Career Tools & Resources</title>
+  <meta name="description" content="Free career micro-tools, PDFs, and articles designed to optimize your job search, resumes, and LinkedIn profile.">
+  <meta property="og:title" content="Inkvale — Quiet Career Tools & Resources"/>
+  <meta property="og:description" content="Free career micro-tools, PDFs, and articles designed to optimize your job search, resumes, and LinkedIn profile."/>
+  <meta property="og:type" content="website"/>
+  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/"/>
 
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"Inkvale",
-  "url":"https://inkvale-code.github.io/inkvale/",
-  "logo":"https://inkvale-code.github.io/inkvale/assets/logo.png",
-  "sameAs":[]
-}
-</script>
+  <style>
+    body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;max-width:880px;margin:36px auto;padding:20px;color:#0F0F0F}
+    header{display:flex;align-items:center;gap:12px}
+    .logo{font-weight:700;font-size:28px;color:#0F0F0F}
+    .tag{color:#5A73FF;font-weight:600}
+    nav{margin-top:14px}
+    nav a{margin-right:12px;color:#9AA0A6;text-decoration:none}
+    article{margin-top:18px;line-height:1.6}
+    footer{margin-top:40px;color:#9AA0A6;font-size:13px}
+    .button{background:#5A73FF;color:#fff;padding:8px 12px;border-radius:6px;text-decoration:none;display:inline-block;margin:6px 0}
+    .section{margin-bottom:40px}
+  </style>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "url":"https://inkvale-code.github.io/inkvale/",
-  "name":"Inkvale",
-  "description":"Free career micro-tools, PDFs, and articles designed to optimize your job search, resumes, and LinkedIn profile."
-}
-</script>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Inkvale",
+    "url":"https://inkvale-code.github.io/inkvale/",
+    "logo":"https://inkvale-code.github.io/inkvale/assets/logo.png"
+  }
+  </script>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"SoftwareApplication",
-      "name":"Resume Keyword Matcher",
-      "url":"https://inkvale-code.github.io/inkvale/tools/resume-keyword-matcher.html"
-    },
-    {
-      "@type":"SoftwareApplication",
-      "name":"ATS Resume Scanner",
-      "url":"https://inkvale-code.github.io/inkvale/tools/ats-resume-scanner.html"
-    },
-    {
-      "@type":"SoftwareApplication",
-      "name":"Cover Letter Generator",
-      "url":"https://inkvale-code.github.io/inkvale/tools/cover-letter-generator.html"
-    },
-    {
-      "@type":"SoftwareApplication",
-      "name":"Job Interview Question Generator",
-      "url":"https://inkvale-code.github.io/inkvale/tools/interview-generator.html"
-    },
-    {
-      "@type":"SoftwareApplication",
-      "name":"LinkedIn Profile Optimizer",
-      "url":"https://inkvale-code.github.io/inkvale/tools/linkedin-optimizer.html"
-    },
-    {
-      "@type":"Product",
-      "name":"Job Prep Starter Kit",
-      "url":"https://inkvale-code.github.io/inkvale/products/job-prep-starter.html",
-      "offers":{
-        "@type":"Offer",
-        "priceCurrency":"GBP",
-        "price":"10.00",
-        "url":"https://gumroad.com/l/YOUR_GUMROAD_SLUG",
-        "availability":"https://schema.org/InStock"
-      }
-    },
-    {
-      "@type":"Product",
-      "name":"LinkedIn Success Mini Guide",
-      "url":"https://inkvale-code.github.io/inkvale/products/linkedin-mini-guide.html",
-      "offers":{
-        "@type":"Offer",
-        "priceCurrency":"GBP",
-        "price":"7.00",
-        "url":"https://gumroad.com/l/YOUR_SECOND_GUMROAD_SLUG",
-        "availability":"https://schema.org/InStock"
-      }
-    }
-  ]
-}
-</script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://inkvale-code.github.io/inkvale/",
+    "name":"Inkvale",
+    "description":"Free career micro-tools, PDFs, and articles designed to optimize your job search, resumes, and LinkedIn profile."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"SoftwareApplication","name":"Resume Keyword Matcher","url":"https://inkvale-code.github.io/inkvale/tools/resume-keyword-matcher.html"},
+      {"@type":"SoftwareApplication","name":"ATS Resume Scanner","url":"https://inkvale-code.github.io/inkvale/tools/ats-resume-scanner.html"},
+      {"@type":"SoftwareApplication","name":"Cover Letter Generator","url":"https://inkvale-code.github.io/inkvale/tools/cover-letter-generator.html"},
+      {"@type":"SoftwareApplication","name":"Job Interview Question Generator","url":"https://inkvale-code.github.io/inkvale/tools/interview-generator.html"},
+      {"@type":"SoftwareApplication","name":"LinkedIn Profile Optimizer","url":"https://inkvale-code.github.io/inkvale/tools/linkedin-optimizer.html"},
+      {"@type":"Product","name":"Job Prep Starter Kit","url":"https://inkvale-code.github.io/inkvale/products/job-prep-starter.html","offers":{"@type":"Offer","priceCurrency":"GBP","price":"10.00","url":"https://gumroad.com/l/YOUR_GUMROAD_SLUG","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"LinkedIn Success Mini Guide","url":"https://inkvale-code.github.io/inkvale/products/linkedin-mini-guide.html","offers":{"@type":"Offer","priceCurrency":"GBP","price":"7.00","url":"https://gumroad.com/l/YOUR_SECOND_GUMROAD_SLUG","availability":"https://schema.org/InStock"}}
+    ]
+  }
+  </script>
 </head>
 <body>
+  <header>
+    <div>
+      <div class="logo">Inkvale</div>
+      <div class="tag">Quiet career tools & resources</div>
+    </div>
+  </header>
 
-<h1>Welcome to Inkvale</h1>
-<p>Your quiet, anonymous hub for career tools, guides, and resources — built to help you improve your job search, resumes, LinkedIn, and interview skills without showing your face.</p>
+  <nav>
+    <a href="/index.html">Home</a>
+    <a href="/posts/">Articles</a>
+    <a href="/tools/">Tools</a>
+    <a href="/products/">Products</a>
+  </nav>
 
-<div class="section">
-<h2>Free Career Tools</h2>
-<ul>
-<li><a href="/tools/resume-keyword-matcher.html">Resume Keyword Matcher</a></li>
-<li><a href="/tools/ats-resume-scanner.html">ATS Resume Scanner</a></li>
-<li><a href="/tools/cover-letter-generator.html">Cover Letter Generator</a></li>
-<li><a href="/tools/interview-generator.html">Job Interview Question Generator</a></li>
-<li><a href="/tools/linkedin-optimizer.html">LinkedIn Profile Optimizer</a></li>
-</ul>
-</div>
+  <article>
+    <h1>Welcome to Inkvale</h1>
+    <p>Your anonymous hub for career micro-tools, guides, and starter PDFs — designed to quietly improve your job search, resumes, and LinkedIn without showing your face.</p>
 
-<div class="section">
-<h2>Paid Career Products</h2>
-<ul>
-<li><a href="/products/job-prep-starter.html">Job Prep Starter Kit — £10</a></li>
-<li><a href="/products/linkedin-mini-guide.html">LinkedIn Success Mini Guide — £7</a></li>
-</ul>
-</div>
+    <div class="section">
+      <h2>Free Career Tools</h2>
+      <ul>
+        <li><a href="/tools/resume-keyword-matcher.html">Resume Keyword Matcher</a></li>
+        <li><a href="/tools/ats-resume-scanner.html">ATS Resume Scanner</a></li>
+        <li><a href="/tools/cover-letter-generator.html">Cover Letter Generator</a></li>
+        <li><a href="/tools/interview-generator.html">Job Interview Question Generator</a></li>
+        <li><a href="/tools/linkedin-optimizer.html">LinkedIn Profile Optimizer</a></li>
+      </ul>
+    </div>
 
-<div class="section">
-<h2>Articles & Guides</h2>
-<ul>
-<li><a href="/posts/job-search-mistakes.html">Top 5 Job Search Mistakes and How to Avoid Them</a></li>
-<li><a href="/posts/ats-resume-optimization.html">How to Optimize Your Resume for ATS</a></li>
-</ul>
-</div>
+    <div class="section">
+      <h2>Paid Career Products</h2>
+      <ul>
+        <li><a href="/products/job-prep-starter.html">Job Prep Starter Kit — £10</a></li>
+        <li><a href="/products/linkedin-mini-guide.html">LinkedIn Success Mini Guide — £7</a></li>
+      </ul>
+    </div>
 
-<div class="section">
-<h2>Start Now</h2>
-<p>Try our tools, read the guides, and check out our starter kits to level up your job search quietly and efficiently.</p>
-<a href="/products/job-prep-starter.html" class="button">View Starter Kit →</a>
-<a href="/tools/resume-keyword-matcher.html" class="button">Use Resume Keyword Matcher →</a>
-</div>
+    <div class="section">
+      <h2>Articles & Guides</h2>
+      <ul>
+        <li><a href="/posts/job-search-mistakes.html">Top 5 Job Search Mistakes and How to Avoid Them</a></li>
+        <li><a href="/posts/ats-resume-optimization.html">How to Optimize Your Resume for ATS</a></li>
+      </ul>
+    </div>
 
+    <div class="section">
+      <h2>Start Now</h2>
+      <p>Try our tools, read our guides, and explore starter kits to level up your career quietly and efficiently.</p>
+      <a href="/products/job-prep-starter.html" class="button">View Starter Kit →</a>
+      <a href="/tools/resume-keyword-matcher.html" class="button">Use Resume Keyword Matcher →</a>
+    </div>
+  </article>
+
+  <footer>© 2025 Inkvale • Built with free tools</footer>
 </body>
 </html>
