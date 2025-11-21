@@ -1,104 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Cover Letter Generator — JobToolKit</title>
-<meta name="description" content="Generate a quick, tailored cover letter from your job title, company, and 2–3 achievements.">
-<style>
-body{font-family:Arial,Helvetica,sans-serif;max-width:920px;margin:22px auto;padding:18px;color:#111}
-h1{color:#0F3C78}
-nav a{margin-right:10px}
-label{font-weight:600;display:block;margin-top:10px}
-textarea,input,select{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:6px}
-textarea{height:120px}
-button{margin-top:10px;padding:10px 14px;border:0;border-radius:8px;background:#0F3C78;color:#fff;font-weight:700;cursor:pointer}
-.output{margin-top:14px;padding:12px;border-radius:8px;background:#f7f9fc;border:1px solid #e6eef9}
-.cta{margin-top:12px;padding:10px;border-radius:8px;background:#fff;border:1px dashed #ccc}
-.small{font-size:13px;color:#666}
-pre{white-space:pre-wrap;word-wrap:break-word}
-</style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cover Letter Generator — Inkvale</title>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RHZQNJ2JYG');
+  </script>
 
-  gtag('config', 'G-RHZQNJ2JYG');
-</script>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
+    nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
+    .button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top:8px; }
+  </style>
 </head>
 <body>
+
 <nav>
-  <a href="/">Home</a>
-  <a href="/tools/">Tools</a>
-  <a href="/posts/">Articles</a>
-  <a href="/products/">Products</a>
+  <a href="../index.html">Home</a>
+  <a href="../posts/index.html">Articles</a>
+  <a href="index.html">Tools</a>
+  <a href="../products/index.html">Products</a>
 </nav>
 
 <h1>Cover Letter Generator</h1>
-<p class="small">Fill in the fields and get a clean, editable cover letter in seconds.</p>
+<p>Generate a quick, professional cover letter using this tool (example placeholder).</p>
 
-<label>Job title & company</label>
-<input id="jobtitle" placeholder="e.g. Marketing Associate — Acme Ltd">
+<p><a class="button" href="index.html">← Back to Tools</a></p>
 
-<label>One-line pitch (what you bring)</label>
-<input id="pitch" placeholder="e.g. 3 years growing organic traffic by 40%">
-
-<label>Key achievements (1 per line)</label>
-<textarea id="bullets" placeholder="• Increased newsletter signups by 25%&#10;• Managed a content calendar of 30+ posts/month"></textarea>
-
-<label>Tone</label>
-<select id="tone">
-  <option value="professional">Professional</option>
-  <option value="friendly">Friendly</option>
-  <option value="concise">Concise</option>
-</select>
-
-<button id="runBtn">Generate letter</button>
-
-<div id="out" class="output" style="display:none">
-  <div id="result"></div>
-  <div class="cta">
-    <p><strong>Next step:</strong> <span id="upsellText"></span></p>
-    <p class="small"><a id="upsellLink" href="/products/cover-letter-mega-pack.html" target="_blank">Get the full Cover Letter Mega Pack →</a></p>
-  </div>
-</div>
-
-<script>
-document.getElementById('runBtn').addEventListener('click', () => {
-  const jt = document.getElementById('jobtitle').value.trim();
-  const pitch = document.getElementById('pitch').value.trim();
-  const bulletsRaw = document.getElementById('bullets').value.split(/\n/).map(l=>l.replace(/^[-•]\s*/,'').trim()).filter(Boolean);
-  const tone = document.getElementById('tone').value;
-
-  if(!jt || !pitch){
-    alert('Please fill job title/company and your one-line pitch.');
-    return;
-  }
-
-  const introMap = {
-    professional: `I am writing to express my interest in the ${jt} opportunity. With ${pitch}, I believe I can contribute meaningfully to your team.`,
-    friendly: `I’m excited to apply for the ${jt} role. ${pitch}, and I’d love the chance to bring that experience to your team.`,
-    concise: `I’m applying for ${jt}. ${pitch}.`
-  };
-
-  const intro = introMap[tone] || introMap.professional;
-
-  let bulletSection = '';
-  if(bulletsRaw.length){
-    bulletSection = `\n\nA few relevant highlights:\n` + bulletsRaw.map(b=>`• ${b}`).join('\n');
-  }
-
-  const closing = `\n\nThank you for taking the time to review my application. I’d welcome the chance to discuss how I can help in more detail.\n\nBest regards,\n[Your Name]`;
-
-  const full = `Dear Hiring Team,\n\n${intro}${bulletSection}${closing}`;
-
-  document.getElementById('result').innerHTML = '<pre>'+full+'</pre>';
-  document.getElementById('upsellText').textContent = 'Use the Mega Pack for more polished templates and variations.';
-  document.getElementById('out').style.display = 'block';
-});
-</script>
 </body>
 </html>
