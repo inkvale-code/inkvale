@@ -2,77 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>ATS Resume Scanner — Inkvale</title>
+  <meta name="description" content="Quick simulated ATS check. Paste your resume and get a basic pass/fail and tips to improve ATS compatibility." />
+  <link rel="canonical" href="https://inkvale-code.github.io/inkvale/tools/ats-resume-scanner.html" />
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZQNJ2JYG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RHZQNJ2JYG');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RHZQNJ2JYG');</script>
 
-  <style>
-    body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
-    nav a { margin-right: 12px; text-decoration: none; color: #5A73FF; }
-    textarea { width: 100%; height: 120px; margin-bottom: 12px; padding: 8px; }
-    button { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer; }
-    .output { background: #f7f7f7; padding: 12px; border-radius: 6px; margin-top: 12px; display: none; }
-    .badge { display:inline-block; padding:6px 10px; border-radius:6px; background:#222; color:#fff; }
-    .button-link { background: #5A73FF; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; display:inline-block; margin-top: 8px; }
-  </style>
+  <style>body{font-family:system-ui;padding:18px;max-width:920px;margin:0 auto}textarea{width:100%;height:220px;padding:8px;border-radius:6px;border:1px solid #ddd}.btn{padding:10px 12px;background:#0a58ca;color:#fff;border-radius:6px;text-decoration:none;display:inline-block}</style>
 </head>
 <body>
+  <a href="/inkvale/tools/">← Tools</a> | <a href="/inkvale/">Home</a>
 
-<nav>
-  <a href="../index.html">Home</a>
-  <a href="../posts/index.html">Articles</a>
-  <a href="index.html">Tools</a>
-  <a href="../products/index.html">Products</a>
-</nav>
+  <h1>ATS Resume Scanner</h1>
+  <p>Paste your resume below and run a quick scan. This is a basic heuristic scanner (not a full ATS). It checks for headings, contact info, and likely resume structure.</p>
 
-<h1>ATS Resume Scanner</h1>
-<p>Paste your resume. This tool checks for common ATS issues: keyword matches, bullet usage, and line length.</p>
+  <textarea id="resume" placeholder="Paste your resume here"></textarea>
+  <div style="margin-top:12px">
+    <button id="scan" class="btn">Run Scan</button>
+    <a class="btn" href="/inkvale/products/quiet-income-starter-kit.html?utm_source=tool&utm_medium=cta&utm_campaign=upsell" style="background:#444;margin-left:12px">Get the Starter Kit (£7)</a>
+  </div>
 
-<label>Paste your resume:</label>
-<textarea id="resume" placeholder="Paste your resume here..."></textarea>
-<button id="scan">Scan Resume</button>
+  <div id="out" style="margin-top:18px"></div>
 
-<div id="out" class="output">
-  <p>Score: <span id="score" class="badge">0%</span></p>
-  <div id="feedback"></div>
-</div>
-
-<script>
-function tokenize(text){ return text.toLowerCase().replace(/[^\w\s]/g,' ').split(/\s+/).filter(Boolean); }
-
-document.getElementById('scan').addEventListener('click',function(){
-  const resume = document.getElementById('resume').value || '';
-  if(!resume){ alert('Please paste your resume.'); return; }
-
-  const tokens = tokenize(resume);
-  let score = 0;
-  const feedback = [];
-
-  // Simple ATS rules
-  if(tokens.length >= 150 && tokens.length <= 600){ score += 30; } else { feedback.push('Resume length may be too short or too long.'); }
-  if(resume.includes('-') || resume.includes('•')){ score += 30; } else { feedback.push('Consider using bullet points.'); }
-  const keywords = ['experience','skills','education','project','certification'];
-  let matches = 0;
-  keywords.forEach(k => { if(tokens.includes(k)) matches++; });
-  score += matches * 8; // max 40
-  if(matches < keywords.length){ feedback.push('Some important keywords are missing: ' + keywords.filter(k => !tokens.includes(k)).join(', ')); }
-
-  if(score > 100) score = 100;
-  document.getElementById('score').textContent = score + '%';
-  document.getElementById('feedback').innerHTML = feedback.length ? '<ul><li>'+feedback.join('</li><li>')+'</li></ul>' : 'Good job! Resume looks ATS-friendly.';
-  document.getElementById('out').style.display = 'block';
-});
-</script>
-
-<p><a class="button-link" href="index.html">← Back to Tools</a></p>
-
+  <script>
+    function simpleScan(text){
+      const out = [];
+      if(!/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/.test(text)) out.push('No email found — add a contact email at the top.');
+      if(!/(experience|work experience|employment)/i.test(text)) out.push('Missing clear "Experience" section header.');
+      if(!/(education)/i.test(text)) out.push('Consider adding an "Education" section if relevant.');
+      if(text.length < 200) out.push('Resume seems short — consider adding detail about achievements.');
+      return out.length ? out : ['Basic structure OK — consider matching keywords to the job description.'];
+    }
+    document.getElementById('scan').addEventListener('click', function(){
+      const text = document.getElementById('resume').value || '';
+      const results = simpleScan(text);
+      document.getElementById('out').innerHTML = '<ul>' + results.map(r => '<li>'+r+'</li>').join('') + '</ul>';
+      if(window.gtag){ gtag('event','tool_use',{'tool_name':'ats_resume_scanner'}); }
+    });
+  </script>
 </body>
 </html>
