@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Resume Keyword Matcher — JobToolKit</title>
+<meta name="description" content="Compare your resume to a job description and see matched keywords and a quick match score.">
+<style>
+body{font-family:Arial,Helvetica,sans-serif;max-width:920px;margin:22px auto;padding:18px;color:#111}
+h1{color:#0F3C78}
+nav a{margin-right:10px}
+label{font-weight:600;display:block;margin-top:10px}
+textarea{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:6px;height:140px}
+button{margin-top:10px;padding:10px 14px;border:0;border-radius:8px;background:#0F3C78;color:#fff;font-weight:700;cursor:pointer}
+.output{margin-top:14px;padding:12px;border-radius:8px;background:#f7f9fc;border:1px solid #e6eef9}
+.badge{display:inline-block;padding:6px 10px;border-radius:6px;background:#0F3C78;color:#fff}
+.cta{margin-top:12px;padding:10px;border-radius:8px;background:#fff;border:1px dashed #ccc}
+.small{font-size:13px;color:#666}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/">Home</a>
+  <a href="/tools/">Tools</a>
+  <a href="/posts/">Articles</a>
+  <a href="/products/">Products</a>
+</nav>
+
+<h1>Resume Keyword Matcher</h1>
+<p class="small">Paste the job advert and your resume. This tool highlights overlapping keywords and gives a quick match score so you can tailor faster.</p>
+
+<label>Job description</label>
+<textarea id="job" placeholder="Paste the job advert here..."></textarea>
+
+<label>Your resume</label>
+<textarea id="resume" placeholder="Paste your current resume here..."></textarea>
+
+<button id="runBtn">Run match</button>
+
+<div id="out" class="output" style="display:none">
+  <div id="result"></div>
+  <div class="cta">
+    <p><strong>Next step:</strong> <span id="upsellText"></span></p>
+    <p class="small">Get the full checklist and templates: <a id="upsellLink" href="/products/ats-optimization-checklist.html" target="_blank">ATS Optimization Checklist →</a></p>
+  </div>
+</div>
+
+<script>
+function tokenize(text){
+  return (text||'').toLowerCase().replace(/[^\w\s]/g,' ').split(/\s+/).filter(Boolean);
+}
+function uniq(arr){ return [...new Set(arr)]; }
+
+document.getElementById('runBtn').addEventListener('click', () => {
+  const job = document.getElementById('job').value || '';
+  const resume = document.getElementById('resume').value || '';
+  if(!job || !resume){ alert('Please paste both the job description and your resume.'); return; }
+
+  const jobTokens = uniq(tokenize(job));
+  const resumeTokens = new Set(tokenize(resume));
+  const matches = jobTokens.filter(t => resumeTokens.has(t) && t.length > 2);
+
+  const score = jobTokens.length ? Math.round(matches.length / jobTokens.length * 100) : 0;
+
+  const resultHtml = `
+    <p>Match score: <span class="badge">${score}%</span></p>
+    <p><strong>Matched keywords:</strong> ${matches.length ? matches.join(', ') : 'none detected'}</p>
+    <p class="small">Tip: aim for 60–80% match on the most important roles.</p>
+  `;
+
+  document.getElementById('result').innerHTML = resultHtml;
+  document.getElementById('upsellText').textContent = 'Download the ATS Optimization Checklist and resume templates.';
+  document.getElementById('out').style.display = 'block';
+});
+</script>
+</body>
+</html>
